@@ -11,8 +11,7 @@ block scripts
       var socket = io.connect(window.location.href);
       
       window.addEventListener('deviceorientation', function(event) {
-        console.log(event.alpha);
-        socket.emit('rotation', event.alpha);
+        socket.emit('rotation', '-'+event.alpha);
       }, false);
       
     }());

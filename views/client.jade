@@ -1,0 +1,18 @@
+extends layout
+
+block content
+  p.lead
+    | Rotate your phone
+  #debug
+
+block scripts
+  script.
+    (function(){
+      var socket = io.connect(window.location.href);
+      
+      window.addEventListener('deviceorientation', function(event) {
+        console.log(event.alpha);
+        socket.emit('rotation', event.alpha);
+      }, false);
+      
+    }());

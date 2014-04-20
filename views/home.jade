@@ -1,0 +1,16 @@
+extends layout
+
+block content
+  div.text-center
+    img#phone(src='/img/phone.png')
+
+block scripts
+  script.
+    (function(){
+      var socket = io.connect(window.location.href);
+      
+      socket.on('rotation', function (data) {
+        console.log(data);
+        $('#phone').css({'transform': 'rotate('+data+'deg)'});
+      });
+    }());

@@ -11,7 +11,11 @@ block scripts
       var socket = io.connect(window.location.href);
       
       window.addEventListener('deviceorientation', function(event) {
-        socket.emit('rotation', '-'+event.alpha);
+        var rotation = Math.floor(event.alpha);
+        rotation = rotation - 270;
+        rotation = -rotation;
+        $('#debug').text(rotation+'deg');
+        socket.emit('rotation', rotation);
       }, false);
       
     }());

@@ -10,6 +10,7 @@ block scripts
       var socket = io.connect(window.location.href);
       
       socket.on('rotation', function (data) {
+        console.log(data);
         $('#phone').css({'transform': 'rotate('+data+'deg)'});
       });
     }());
